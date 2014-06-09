@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+
+        </div>
+    </section>
+}
+
+
+<script src="~/ScriptPlugin/XmlCreatorPlugin.js"></script>
+<script>
+    var xml;
+    $(document).ready(function () {
+        $("#New").click(function () {
+            $("#createxmlnode").show();
+        });
+        $("#btncreate").click(function () {
+            var orgname = $("#txtorg").val();
+            var autname = $("#txtauthor").val();
+            var nodename = $("#txtrootName").val();
+            var nodeval = $("#txtrootValue").val();
+            xml = $("#xmltable").GenerateXmlCreator({
+                rootNode: nodename,
+                rootValue: nodeval,
+                author: autname,
+                organization: orgname
+            });
+            $("#createxmlnode").hide();
+        });
+
+        //$("#export").click(function () {
+        //    var str = xml.getXmlDocument();
+        //    var csvData = 'data:text/xml;charset=utf-8,' + encodeURIComponent(str);
+        //    var a = document.createElement('a');
+        //    a.href = csvData;
+        //    a.target = '_blank';
+        //    a.download = "download.xml";
+        //    a.click();
+        //    $(a).remove();
+        //});
+
+    });
+
+</script>
+<link href="~/ScriptPlugin/css/xmleditor.css" rel="stylesheet" />
+<div id="main-div" style="min-height: 400px;">
+    <input type="button" id="New" value="Yeni Xml Oluştur" />
+@*     <input type="button" id="export" value="Çıktı Al" />*@
+    <div id="xmltable">
+    </div>
+    <div id="createxmlnode">
+        <table>
+            <tr>
+                <td>Organization Name
+                </td>
+                <td>
+                    <input type="text" id="txtorg" />
+                </td>
+            </tr>
+            <tr>
+                <td>Author Name
+                </td>
+                <td>
+                    <input type="text" id="txtauthor" />
+                </td>
+            </tr>
+            <tr>
+                <td>Root Node Name
+                </td>
+                <td>
+                    <input type="text" id="txtrootName" />
+                </td>
+            </tr>
+            <tr>
+                <td>Root Node Value
+                </td>
+                <td>
+                    <input type="text" id="txtrootValue" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" id="btncreate" value="Create" />
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    @*<table class="menutable">
+        <tr>
+            <td><span>Xml Kodunu Göster</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span>XPath Göster</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span>Elementi Sil</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Ekle
+            </td>
+            <td style="width: 22px;">
+                <img src="~/ScriptPlugin/arrow-right.gif" id="btnrow" />
+                <span>
+                    <table class="menutable" class="child">
+                        <tr>
+                            <td><span>Yorum</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Özellik</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Element</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span id="cancel">İptal</span>
+                            </td>
+                        </tr>
+                    </table>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td><span id="cancel">İptal</span>
+            </td>
+        </tr>
+
+    </table>*@
+    @*<div style="width:550px;border:2px solid black;padding-left:10px;">
+        <b><center>Element Bilgileri</center></b>
+        <table>
+            <tr>
+                <td>
+                    Element İsmi
+                </td>
+                <td>
+                    <input type="text" id="popelementname" />
+                    <input type="hidden" id="popmust" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Element Değeri
+                </td>
+                <td>
+                    <input type="text" id="popelementvalue" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                </td>
+                <td>
+                    <input type="button" id="popcancel" value="Vazgeç" />
+                    <input type="button" id="popok" value="Kaydet" />
+                </td>
+            </tr>
+        </table>
+    </div>*@
+</div>
